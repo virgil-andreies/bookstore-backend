@@ -13,7 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class Book implements Serializable {
-	private static final long seralVersionUID=482093L;
+
+	private static final long serialVersionUID = 8604093708631733403L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -22,13 +23,14 @@ public class Book implements Serializable {
 	private String title;
 	private String author;
 	private String publisher;
-	private String publicationData;
+	private String publicationDate;
 	private String language;
 	private String category;
 	private int numberOfPages;
 	private String format;
 	private String ISBN;
 	private double shippingWeight;
+	private double listPrice;
 	private double ourPrice;
 	private boolean active=true;
 	
@@ -71,12 +73,12 @@ public class Book implements Serializable {
 		this.publisher = publisher;
 	}
 
-	public String getPublicationData() {
-		return publicationData;
+	public String getPublicationDate() {
+		return publicationDate;
 	}
 
-	public void setPublicationData(String publicationData) {
-		this.publicationData = publicationData;
+	public void setPublicationDate(String publicationDate) {
+		this.publicationDate = publicationDate;
 	}
 
 	public String getLanguage() {
@@ -125,6 +127,14 @@ public class Book implements Serializable {
 
 	public void setShippingWeight(double shippingWeight) {
 		this.shippingWeight = shippingWeight;
+	}
+
+	public double getListPrice() {
+		return listPrice;
+	}
+
+	public void setListPrice(double listPrice) {
+		this.listPrice = listPrice;
 	}
 
 	public double getOurPrice() {

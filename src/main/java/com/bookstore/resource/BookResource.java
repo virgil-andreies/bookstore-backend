@@ -63,7 +63,7 @@ public class BookResource {
 	@RequestMapping(value="/update/image", method=RequestMethod.POST)
 	public ResponseEntity updateImagePost(	@RequestParam("id") Long id, HttpServletResponse response, HttpServletRequest request) {
 		try {
-			
+			// Resources/static/images/book folder has to be refreshed when updating an initial image
 			Book book = bookService.getById(id);
 			MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 			Iterator<String> it = multipartRequest.getFileNames();

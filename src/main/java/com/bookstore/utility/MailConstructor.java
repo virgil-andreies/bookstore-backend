@@ -19,7 +19,7 @@ public class MailConstructor {
 		
 		SimpleMailMessage email = new SimpleMailMessage();
 		email.setTo(user.getEmail());
-		email.setSubject("Virgil's bookStore - New User");
+		email.setSubject("Virgil's BookStore - New User");
 		email.setText(message);
 		email.setFrom(env.getProperty("support.email"));
 		

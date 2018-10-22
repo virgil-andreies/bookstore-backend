@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.bookstore.config.SecurityUtility;
 import com.bookstore.domain.security.Role;
-import com.bookstore.domain.security.User;
+import com.bookstore.domain.User;
 import com.bookstore.domain.security.UserRole;
 import com.bookstore.service.UserService.UserService;
 

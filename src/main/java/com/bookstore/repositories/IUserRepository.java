@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.bookstore.domain.security.User;
+import com.bookstore.domain.User;
 
 public interface IUserRepository extends CrudRepository<User, Long>{
 	User findByUsername(String username);

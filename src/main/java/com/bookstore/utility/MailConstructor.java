@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Component;
 
-import com.bookstore.domain.security.User;
+import com.bookstore.domain.User;
 
 @Component
 public class MailConstructor {

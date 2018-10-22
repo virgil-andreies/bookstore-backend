@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookstore.domain.security.Role;
-import com.bookstore.domain.security.User;
+import com.bookstore.domain.User;
 import com.bookstore.domain.security.UserRole;
 import com.bookstore.config.SecurityConfig;
 import com.bookstore.config.SecurityUtility;
@@ -157,7 +157,6 @@ public class UserResource {
 	
 	@RequestMapping("/getCurrentUser")
 	public User getCurrentUser(Principal principal) {
-		String username = principal.getName();
 		User user = new User();
 		if ( null != principal ) {
 			user = userService.findByUsername(principal.getName());

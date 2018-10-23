@@ -13,11 +13,13 @@ import org.springframework.transaction.annotation.Transactional;
 import com.bookstore.domain.User;
 import com.bookstore.domain.UserBilling;
 import com.bookstore.domain.UserPayment;
+import com.bookstore.domain.UserShipping;
 import com.bookstore.domain.security.UserRole;
 import com.bookstore.repositories.IRoleRepository;
 import com.bookstore.repositories.IUserBillingRepository;
 import com.bookstore.repositories.IUserPaymentRepository;
 import com.bookstore.repositories.IUserRepository;
+import com.bookstore.repositories.IUserShippingRepository;
 
 @Service
 public class UserService implements IUserService{
@@ -35,6 +37,9 @@ public class UserService implements IUserService{
 	
 	@Autowired
 	private IUserPaymentRepository userPaymentRepository;
+	
+	@Autowired
+	private IUserShippingRepository userShippingRepository;
 
 	@Transactional
 	public User createUser(User user, Set<UserRole> userRoles) {
@@ -106,6 +111,29 @@ public class UserService implements IUserService{
 			} else {
 				userPayment.setDefaultPayment(false);
 				userPaymentRepository.save(userPayment);
+			}
+		}
+	}
+
+	@Override
+	public void updateUserShipping(UserShipping userShipping, User user) {
+		userShipping.setUser(user);
+		userShipping.setUserShippingDefault(true);
+		user.getUserShippingList().add(userShipping);
+		save(user);
+	}
+	
+	@Override
+	public void setUserDefaultShipping(Long userShippingId, User user) {
+		List<UserShipping> userShippingList = (List<UserShipping>) userShippingRepository.findAll();
+		
+		for(UserShipping userShipping : userShippingList) {
+			if (userShipping.getId() == userShippingId) {
+				userShipping.setUserShippingDefault(true);
+				userShippingRepository.save(userShipping);
+			} else {
+				userShipping.setUserShippingDefault(false);
+				userShippingRepository.save(userShipping);
 			}
 		}
 	}

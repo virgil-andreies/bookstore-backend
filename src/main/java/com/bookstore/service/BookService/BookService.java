@@ -31,7 +31,7 @@ public class BookService implements IBookService{
 	}
 
 	@Override
-	public Book getById(long id) {
+	public Book getById(Long id) {
 		return bookRepository.findOne(id);
 	}
 

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.bookstore.domain.ShoppingCart;
 import com.bookstore.domain.User;
 import com.bookstore.domain.UserBilling;
 import com.bookstore.domain.UserPayment;
@@ -54,7 +55,13 @@ public class UserService implements IUserService{
 			
 			user.getUserRoles().addAll(userRoles);
 			
+			ShoppingCart shoppingCart = new ShoppingCart();
+			
+			shoppingCart.setUser(user);
+			user.setShoppingCart(shoppingCart);
+			
 			user.setUserPaymentList(new ArrayList<UserPayment>());
+			user.setUserShippingList(new ArrayList<UserShipping>());
 			
 			localUser = userRepository.save(user);
 			

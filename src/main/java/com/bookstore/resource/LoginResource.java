@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bookstore.service.UserService.UserService;
+import com.bookstore.service.UserService.IUserService;
 
 @RestController
 public class LoginResource {
 	@Autowired
-	private UserService userService;
+	private IUserService userService;
 	
 	@RequestMapping("/token")
 	public Map<String, String> token(HttpSession session, HttpServletRequest request){

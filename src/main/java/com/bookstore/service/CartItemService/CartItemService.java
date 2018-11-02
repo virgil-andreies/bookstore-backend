@@ -89,7 +89,7 @@ public class CartItemService implements ICartItemService{
 	}
 	
 //	public List<CartItem> findByOrder(Order order) {
-//		return cartItemRepository.findbyOrder(order);
+//		return cartItemRepository.findByOrder(order);
 //	}
 
 }

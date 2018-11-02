@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.security.Principal;
 import java.util.Iterator;
 import java.util.List;
 
@@ -110,6 +111,12 @@ public class BookResource {
 		Files.delete(Paths.get("src/main/resources/static/image/book/"+fileName));
 		
 		return new ResponseEntity("Book with id " +id+" was removed successfully", HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/searchBook", method=RequestMethod.POST)
+	public List<Book> searchBook(@RequestBody String keyword) {
+		List<Book> bookList = bookService.blurrySsearch(keyword);
+		return bookList;
 	}
 	
 }
